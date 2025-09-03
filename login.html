@@ -23,17 +23,25 @@
             <li><a href="/contact">Contact </a></li>
         </ul>
     </nav>
+   
     <main>
-        <h1>About</h1>
-        <Article>
-            <h2>One app, many destinations</h2>
-            <p>Go anywhere fast and avoid unecessary queue on the bustop</p>
-        </Article>
-        <Article>
-            <h2>We make you choose your driver</h2>
-            <p>Providing access to cars enrouting your destinations</p>
-            <p><a href="/signup.html">Sign up here</a></p>
-        </Article>
+        <h1>Sign Up</h1>
+        <form action="">
+            <div>
+                <label for="user_name">UserName</label>
+                <input type="text" id="user_name" name="user_name" required minlength="3">
+            </div>
+           
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="user_password" name ="user_password">
+            </div>
+            
+            <div>
+                <button type="submit" id="login">Login</button>
+            </div>
+        </form>
+        
     </main>
     <footer>
 <p>&copy; Copyright GetThereFast</p>

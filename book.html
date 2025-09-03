@@ -23,17 +23,26 @@
             <li><a href="/contact">Contact </a></li>
         </ul>
     </nav>
+   
     <main>
-        <h1>About</h1>
-        <Article>
-            <h2>One app, many destinations</h2>
-            <p>Go anywhere fast and avoid unecessary queue on the bustop</p>
-        </Article>
-        <Article>
-            <h2>We make you choose your driver</h2>
-            <p>Providing access to cars enrouting your destinations</p>
-            <p><a href="/signup.html">Sign up here</a></p>
-        </Article>
+        <h1>Book a Ride</h1>
+        <form method="POST">
+            <fieldset id="size">               
+                    <label for="size">
+                        <input type="radio" name="size" value="2" > 2 sitter ride
+                        <input type="radio" name="size" value="4" > 4 sitter ride
+                        <input type="radio" name="size" value="6" > 6 or more sitter ride
+                    </label>           
+            </fieldset>
+            <fieldset id="car">               
+                    <label for="size">
+                        <input type="radio" name="car" value="car" > Car 
+                        <input type="radio" name="car" value="bus" > Mini Bus
+                        <input type="radio" name="car" value="Truck" > Truck
+                    </label>           
+            </fieldset>
+        </form>
+        
     </main>
     <footer>
 <p>&copy; Copyright GetThereFast</p>
