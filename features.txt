@@ -1,0 +1,73 @@
+🔹 1. User Roles
+
+Rider → requests rides.
+
+Driver → accepts rides and earns money.
+
+Admin → monitors and manages the system.
+
+🔹 2. Core Features per Role
+🚖 Rider Features
+
+Signup/login (with name, email, phone, password)
+
+Profile management (photo, payment method, preferences)
+
+Request a ride (enter pickup & drop-off)
+
+View ride fare estimate before booking
+
+Track ride status in real-time (driver en route, in progress, completed)
+
+Payment (card, wallet, or cash option)
+
+Rate and review drivers
+
+🚘 Driver Features
+
+Signup/login (with license, vehicle info)
+
+Profile management (availability status, car details)
+
+Receive ride requests (accept/reject)
+
+Navigation (Google Maps integration for pickup/drop-off)
+
+Earnings dashboard (completed rides, revenue)
+
+Rate and review riders
+
+🛠️ Admin Features
+
+Admin dashboard (overview of users, rides, payments)
+
+Manage users (approve/block riders & drivers)
+
+Monitor live rides (tracking for safety & support)
+
+Payment oversight (transactions, refunds, disputes)
+
+Analytics (most active areas, peak times, revenue reports)
+
+3. MVP vs. Nice-to-Have
+✅ Must-Have (MVP)
+
+Rider: signup/login, request ride, track ride, payment, rating
+
+Driver: signup/login, accept rides, complete rides, earnings
+
+Admin: dashboard, manage users, monitor rides
+
+✨ Nice-to-Have (later)
+
+In-app chat/call between rider & driver
+
+Promo codes & discounts
+
+Ride history & invoices
+
+Wallet with balance top-up
+
+Surge pricing (higher fares during peak times)
+
+Driver background verification system
