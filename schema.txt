@@ -1,0 +1,65 @@
+-- USERS: Riders & Drivers (use role column to differentiate)
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) UNIQUE NOT NULL,
+    role ENUM('rider', 'driver', 'admin') NOT NULL DEFAULT 'rider',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- DRIVER PROFILES: Extra details only for drivers
+CREATE TABLE driver_profiles (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    license_number VARCHAR(50) UNIQUE NOT NULL,
+    vehicle_make VARCHAR(50),
+    vehicle_model VARCHAR(50),
+    vehicle_plate VARCHAR(20) UNIQUE,
+    is_verified BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- RIDES: Trip details
+CREATE TABLE rides (
+    id SERIAL PRIMARY KEY,
+    rider_id INT NOT NULL,
+    driver_id INT,
+    pickup_location VARCHAR(255) NOT NULL,
+    dropoff_location VARCHAR(255) NOT NULL,
+    fare_estimate DECIMAL(10,2),
+    fare_actual DECIMAL(10,2),
+    status ENUM('requested', 'accepted', 'in_progress', 'completed', 'cancelled')
+        DEFAULT 'requested',
+    requested_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    started_at TIMESTAMP,
+    completed_at TIMESTAMP,
+    FOREIGN KEY (rider_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (driver_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
+-- PAYMENTS: Record of ride payments
+CREATE TABLE payments (
+    id SERIAL PRIMARY KEY,
+    ride_id INT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    method ENUM('card', 'wallet', 'cash') DEFAULT 'card',
+    status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+    paid_at TIMESTAMP,
+    FOREIGN KEY (ride_id) REFERENCES rides(id) ON DELETE CASCADE
+);
+
+-- REVIEWS: Rider <-> Driver feedback
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY,
+    ride_id INT NOT NULL,
+    reviewer_id INT NOT NULL,
+    reviewee_id INT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ride_id) REFERENCES rides(id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewer_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (reviewee_id) REFERENCES users(id) ON DELETE CASCADE
+);
